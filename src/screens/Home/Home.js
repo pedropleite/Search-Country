@@ -3,11 +3,22 @@ import { Card } from '../../components/UI/Card/Card';
 import { useEffect, useState } from 'react';
 import { Main, ContainerCountries, SearchBar, Description } from './styles';
 import { LoadingScreen } from '../../components/events/loadingScreen/LoadingScreen';
+import { Modal } from '../../components/UI/Modal/Modal';
 
 export const Home = () => {
     const [countries, setCountries] = useState([]);
     const [filteredCountries, setFilteredCountries] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [showModal, setShowModal] = useState(false);
+    const [modalContent, setModalContent] = useState([]);
+
+    const handleModal = (props) => {
+        if (props) {
+            setModalContent(props);
+        }
+
+        setShowModal((prev) => !prev);
+    };
 
     useEffect(() => {
         api.get('/all')
@@ -37,22 +48,29 @@ export const Home = () => {
 
     return (
         <Main>
-            <SearchBar type="text" placeholder="Search..." onChange={handleSearch} />
-            <Description>
-                {filteredCountries.length < 1 ? countries.length : filteredCountries.length} countries were found.
-            </Description>
+            {showModal && <Modal country={modalContent} handleModal={handleModal} />}
+
+            {!showModal && <SearchBar type="text" placeholder="Search..." onChange={handleSearch} />}
+
+            {!showModal && (
+                <Description>
+                    {filteredCountries.length < 1 ? countries.length : filteredCountries.length} countries were found.
+                </Description>
+            )}
             {loading && <LoadingScreen />}
 
-            <ContainerCountries onLoad={loadedImage}>
-                {filteredCountries.length < 1 &&
-                    countries.map((country) => {
-                        return <Card key={country.name.common} country={country} />;
-                    })}
-                {filteredCountries.length > 0 &&
-                    filteredCountries.map((country) => {
-                        return <Card key={country.name.common} country={country} />;
-                    })}
-            </ContainerCountries>
+            {!showModal && (
+                <ContainerCountries onLoad={loadedImage}>
+                    {filteredCountries.length < 1 &&
+                        countries.map((country) => {
+                            return <Card handleModal={handleModal} key={country.name.common} country={country} />;
+                        })}
+                    {filteredCountries.length > 0 &&
+                        filteredCountries.map((country) => {
+                            return <Card handleModal={handleModal} key={country.name.common} country={country} />;
+                        })}
+                </ContainerCountries>
+            )}
         </Main>
     );
 };

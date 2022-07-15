@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
+    cursor: pointer;
     width: 28%;
     display: flex;
     flex-direction: column;
