@@ -1,4 +1,6 @@
 # Search Country 🌎 
+
+<img width ="100%" src="https://github.com/pedropleite/Search-Country/blob/master/READMEGif.gif">
 <br>
 
 # Sobre esse projeto 🔍
