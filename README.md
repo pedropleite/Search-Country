@@ -6,6 +6,7 @@
 <br>
 
 ## Sobre esse projeto 🔍
+<p>Link para a aplicação: https://search-countryp.netlify.app/</p>
 <p>Aplicação construída em ReactJS onde há o consumo da API RestCountries, uma API que possui dados sobre os países do mundo inteiro. Nessa aplicação é feita a criação de uma espécie de "catálogo" com cards que mostram as bandeiras junto aos nomes do respectivo país. Além disso, há uma barra de pesquisa para caso queiramos procurar por um país em específico e caso queiramos mais informações sobre aquele país é só clicarmos sobre ele que um modal irá se abrir com esses dados sobre ele.</p>
 <br> 
 
@@ -35,6 +36,7 @@
 # EN-US
 
 ## About This Project 🔍
+<p>Link to the application: https://search-countryp.netlify.app/</p>
 <p>Application built in ReactJS where there is consumption of the RestCountries API, an API that has data about countries around the world. In this application, a kind of "catalog" is created with cards that show the flags next to the names of the respective country. In addition, there is a search bar if you want to search for a specific country and if you want more information about that country, just click on it and a modal will open with this data about it. </p>
 <br> 
 
